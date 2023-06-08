@@ -12,7 +12,7 @@ import {
 // CSS
 import styles from "./Sidebar.module.scss";
 import { useContext } from "react";
-import { AuthContext } from "../../../../client/src/context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Sidebar = () => {
   const { dispatch } = useContext(AuthContext);
