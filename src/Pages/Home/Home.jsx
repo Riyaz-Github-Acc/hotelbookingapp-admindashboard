@@ -1,39 +1,58 @@
-import Navbar from "../../Components/Navbar/Navbar";
-import Sidebar from "../../Components/Sidebar/Sidebar";
+import useFetch from "../../Hooks/useFetch";
+
 import Widget from "../../Components/Widget/Widget";
-import Chart from "../../Components/Chart/Chart";
-import Featured from "../../Components/Featured/Featured";
-import Details from "../../Components/Table/Table";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+
 import styles from "./Home.module.scss";
 
 const Home = () => {
-    return (
-        <div className={styles.home}>
-            <Sidebar />
-            <div className={styles.homeContainer}>
-                <Navbar />
+  const { data, loading } = useFetch(
+    "https://hotel-booking-app-api.onrender.com/api/hotels"
+  );
 
-                <div className={styles.widgets}>
-                    <Widget type="users" />
-                    <Widget type="orders" />
-                    <Widget type="earnings" />
-                    <Widget type="balance" />
-                </div>
-
-                <div className={styles.charts}>
-                    <Featured />
-                    <Chart aspect={2 / 1} title="Last 6 Months (Revenue)" />
-                </div>
-
-                <div className={styles.listContainer}>
-                    <div className={styles.listTitle}>
-                        <h3>Latest Transactions</h3>
-                        <Details />
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className={styles.home}>
+      <Sidebar />
+      <div className={styles.homeContainer}>
+        <div className={styles.widgets}>
+          <Widget type="users" />
+          <Widget type="hotels" />
+          <Widget type="earnings" />
+          <Widget type="balance" />
         </div>
-    );
+
+        <h1>Hotels List</h1>
+        <div className={styles.recentHotels}>
+          {loading ? (
+            "Loading"
+          ) : (
+            <>
+              {data.map((item) => (
+                <div className={styles.rhItem} key={item._id}>
+                  <div className={styles.hotelDetails}>
+                    <div className={styles.rhName}>{item.name}</div>
+                    <div className={styles.rhDesc}>{item.desc}</div>
+
+                    <div className={styles.rhCity}>{item.city}</div>
+
+                    <div className={styles.rhPrice}>
+                      Starting from <b>${item.lowestPrice}</b>
+                    </div>
+
+                    <div className={styles.rhAddress}>{item.address}</div>
+                  </div>
+
+                  <div className="hotelImg">
+                    <img src={item.photos[0]} alt="" className={styles.rhImg} />
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;

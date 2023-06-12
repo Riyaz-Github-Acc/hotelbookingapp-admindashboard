@@ -1,25 +1,68 @@
 .home {
-    display: flex;
+  display: flex;
 
-    .homeContainer {
-        flex: 6;
+  .homeContainer {
+    flex: 6;
+    padding: 3%;
 
-        .widgets,
-        .charts {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .charts {
-            padding: 5px 20px;
-        }
-
-        .listContainer {
-            margin: 20px;
-            padding: 20px;
-            box-shadow: var(--box-shadow);
-            -webkit-box-shadow: var(--box-shadow);
-        }
+    .widgets {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 50px;
     }
+
+    .recentHotels {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+
+      .rhItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #ffb65c;
+        border-radius: 10px;
+        padding: 15px 25px;
+
+        .hotelDetails {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          .rhName {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--black-color);
+          }
+
+          .rhDesc {
+            color: var(--gray-color-3);
+          }
+
+          .rhCity {
+            font-size: 18px;
+            text-transform: capitalize;
+            margin-top: 8px;
+          }
+
+          .rhPrice {
+            font-size: 18px;
+            font-weight: 600;
+          }
+
+          .rhAddress {
+            margin-top: 8px;
+          }
+        }
+
+        .rhImg {
+          width: 250px;
+          height: 200px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
 }

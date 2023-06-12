@@ -53,8 +53,6 @@ const New = ({ inputs, title }) => {
     <div className={styles.new}>
       <Sidebar />
       <div className={styles.newContainer}>
-        <Navbar />
-
         <div className={styles.top}>
           <h2>{title}</h2>
         </div>
