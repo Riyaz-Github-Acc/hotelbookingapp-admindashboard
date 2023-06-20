@@ -47,13 +47,13 @@ const Login = () => {
       <input
         type="text"
         id="userName"
-        placeholder="User Name"
+        placeholder="Admin"
         onChange={handleInputChange}
       />
       <input
         type="password"
         id="password"
-        placeholder="Password"
+        placeholder="admin@123"
         onChange={handleInputChange}
       />
       <button disabled={loading} onClick={handleLogin}>
