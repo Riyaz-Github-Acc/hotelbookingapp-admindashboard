@@ -1,5 +1,4 @@
 import DataTable from "../../Components/DataTable/DataTable";
-import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import styles from "./List.module.scss";
 
